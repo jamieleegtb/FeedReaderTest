@@ -84,7 +84,7 @@ $(function() {
     // The test suite for "New Feed Selection"
     describe('New Feed Selection', function(){
         const container = document.querySelector('.feed');
-        cost firstFeed = [];
+        const firstFeed = [];
 
         // Check loaded feeds and compare the content that actually changes
          beforeEach(function(done) {
@@ -94,7 +94,7 @@ $(function() {
 
            // Stre the first feed's values
            Array.from(container.children).forEach(content => {
-               firstFeed.push(entry.innerText);
+               firstFeed.push(content.innerText);
            });
 
            // Load next feed
@@ -103,8 +103,8 @@ $(function() {
 
        // Compare first feed against new feed content
        it('content changes', function() {
-           Array.from(feed.children).forEach( (content, index) => {
-               expect(content.innerText === firstFeed[index]).toBe(true);
+           Array.from(container.children).forEach( (content, index) => {
+               expect(content.innerText === firstFeed[index]).toBe(false);
            });
        });
     });
