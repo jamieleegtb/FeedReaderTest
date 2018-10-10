@@ -76,29 +76,24 @@ $(function() {
 
          // Chekc the completed work which contains content
          it('loads feed', function(){
-           const container = document.querySelector('.feed');
+           const container = document.querySelector('.feed .entry');
            expect(container.children.length > 0).toBe(true);
          });
     });
 
     // The test suite for "New Feed Selection"
     describe('New Feed Selection', function(){
-        const container = document.querySelector('.feed');
-        const firstFeed = [];
+        var firstFeed;
 
         // Check loaded feeds and compare the content that actually changes
          beforeEach(function(done) {
-
-           // Load first feed
-           loadFeed(0);
-
-           // Stre the first feed's values
-           Array.from(container.children).forEach(content => {
-               firstFeed.push(content.innerText);
+           loadFeed(0, function(){
+             // Store the first feed's values
+             firstFeed = $('.feed').html();
+             // newer Feeds
+             load(1, done);
            });
 
-           // Load next feed
-           loadFeed(1, done);
        });
 
        // Compare first feed against new feed content
