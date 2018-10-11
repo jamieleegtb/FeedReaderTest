@@ -74,10 +74,9 @@ $(function() {
            loadFeed(0, done);
          });
 
-         // Chekc the completed work which contains content
+         // Check the completed work which contains content
          it('loads feed', function(){
-           const container = document.querySelector('.feed .entry');
-           expect(container.children.length > 0).toBe(true);
+           expect($('.feed .entry').length).toBeGreaterThan(0);
          });
     });
 
