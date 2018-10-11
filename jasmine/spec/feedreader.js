@@ -76,8 +76,7 @@ $(function() {
 
          // Check the completed work which contains content
          it('loads feed', function(){
-           const container = document.querySelector('.feed .entry');
-           expect(container.length > 0).toBe(true);
+           expect($('.feed .entry').length).toBeGreaterThan(0);
          });
     });
 
@@ -91,16 +90,14 @@ $(function() {
              // Store the first feed's values
              firstFeed = $('.feed').html();
              // newer Feeds
-             load(1, done);
+             loadFeed(1, done);
            });
 
        });
 
        // Compare first feed against new feed content
        it('content changes', function() {
-           Array.from(container.children).forEach( (content, index) => {
-               expect(content.innerText === firstFeed[index]).toBe(false);
-           });
+         expect($('.feed .entry').html()).not.toEqual(firstFeed);
        });
     });
 }());
