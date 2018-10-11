@@ -76,7 +76,8 @@ $(function() {
 
          // Check the completed work which contains content
          it('loads feed', function(){
-           expect($('.feed .entry').length).toBeGreaterThan(0);
+           const container = document.querySelector('.feed .entry');
+           expect(container.length > 0).toBe(true);
          });
     });
 
