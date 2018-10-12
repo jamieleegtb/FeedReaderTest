@@ -97,10 +97,7 @@ $(function() {
 
        // Compare first feed against new feed content
        it('content changes', function() {
-          const container = document.querySelector('.feed .entry');
-           Array.from(container.children).forEach( (content, index) => {
-               expect(content.innerText === firstFeed[index]).toBe(false);
-           });
+          expect($('.feed').html()).not.toBe(firstFeed);
        });
     });
 }());
