@@ -31,7 +31,7 @@ $(function() {
          it('url defined', function(){
            for(let feed of allFeeds){
              expect(feed.url).toBeDefined(undefined);
-             expect(feed.url.length).not.toBe('');
+             expect(feed.url.length).not.toBe(0);
            }
          });
 
@@ -39,7 +39,7 @@ $(function() {
          it('name defined', function(){
            for(let feed of allFeeds){
              expect(feed.name).toBeDefined(undefined);
-             expect(feed.name.length).not.toBe('');
+             expect(feed.name.length).not.toBe(0);
            }
          });
     });
@@ -97,7 +97,10 @@ $(function() {
 
        // Compare first feed against new feed content
        it('content changes', function() {
-         expect($('.feed .entry').html()).not.toEqual(firstFeed);
+          const container = document.querySelector('.feed .entry');
+           Array.from(container.children).forEach( (content, index) => {
+               expect(content.innerText === firstFeed[index]).toBe(false);
+           });
        });
     });
 }());
